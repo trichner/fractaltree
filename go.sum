@@ -1,0 +1,4 @@
+github.com/ajstarks/svgo v0.0.0-20210406150507-75cfd577ce75 h1:tuK1xIp+jrEEF0l3xXab78w89ilYr0Am170KdSml2xc=
+github.com/ajstarks/svgo v0.0.0-20210406150507-75cfd577ce75/go.mod h1:K08gAheRH3/J6wwsYMMT4xOr94bZjxIelGM0+d/wbFw=
+honnef.co/go/js/dom/v2 v2.0.0-20200509013220-d4405f7ab4d8 h1:wEmxE7Y1Kwm9Nrzl+0+yYt3uGXkaqbEYLuRzl/hSDgE=
+honnef.co/go/js/dom/v2 v2.0.0-20200509013220-d4405f7ab4d8/go.mod h1:H5R0jAIe6IchQE778FS2QcrNVgS4vPFb0HPb72n/IJI=

@@ -1,0 +1,131 @@
+<!-- html -->
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            /*height: 297mm;*/
+            /*width: 210mm;*/
+            height: 80%;
+            width: 80%;
+            padding: 0;
+            margin: 0;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .page #name-tag {
+            position: absolute;
+            margin: auto;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+            padding-bottom: 40mm;
+
+            font-family: 'Inter';
+            font-size: 5em;
+        }
+
+        .page #details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-align: left;
+            padding: 10mm;
+
+            font-family: monospace;
+            font-size: 1em;
+        }
+
+        .page #footnote-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            text-align: right;
+            padding: 10mm;
+
+            font-family: monospace;
+            font-size: 1em;
+        }
+
+        .page #tree-container {
+            width: 100%;
+            height: 100%;
+            border: solid black;
+            padding: 10mm;
+            margin: auto;
+        }
+
+        #tree-container svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        #controls-wrapper {
+            font-family: monospace;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 1em;
+        }
+
+        #controls-wrapper:hover {
+            background: rgba(33, 166, 33, 0.8)
+        }
+
+        #controls-wrapper > * {
+            visibility: hidden;
+        }
+
+        #controls-wrapper:hover > * {
+            visibility: visible;
+        }
+
+        .control-slider {
+            width: 100%;
+        }
+
+    </style>
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go()
+        WebAssembly.instantiateStreaming(
+            fetch('main.wasm'),
+            go.importObject,
+        ).then(result => {
+            const promise = go.run(result.instance)
+            mountTree('tree-container', 'controls-wrapper', 'details')
+            return promise
+        })
+    </script>
+</head>
+<body>
+<div class="page">
+    <div id="tree-container">
+    </div>
+    <div id="name-tag"></div>
+    <div id="details"></div>
+    <div id="footnote-right">tr</div>
+</div>
+<div id="controls-wrapper">
+
+</div>
+</body>
+</html>
